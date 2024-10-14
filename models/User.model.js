@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
       required: [true, REQUIRED_FIELD],
       match: [PASSWORD_PATTERN, INVALID_PASSWORD],
     },
-    companyName: {
+    agencyName: {
       type: String,
       required: [true, REQUIRED_FIELD],
     },
@@ -35,8 +35,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, REQUIRED_FIELD],
     },
-    phoneNumber: {
-      type: Number,
+    isAdmin: {
+      type: Boolean,
       required: [true, REQUIRED_FIELD],
     },
   },

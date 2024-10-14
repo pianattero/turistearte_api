@@ -1,22 +1,31 @@
 const User = require("../models/User.model");
 
-module.exports.addCurrentUserToReq = (req, res, next) => {
-  if (!req.currentUserId) {
+module.exports.isAuthenticated = (req, res, next) => {
+  const authorization = req.header("Authorization");
+
+  if (!authorization) {
     return next(
-      createError(StatusCodes.UNAUTHORIZED, "Authentication required")
+      createError(
+        StatusCodes.UNAUTHORIZED,
+        "Authorization header was not provided"
+      )
     );
   }
 
-  User.findById(req.currentUserId)
-    .then((user) => {
-      if (!user) {
-        return next(
-          createError(StatusCodes.UNAUTHORIZED, "Authentication required")
-        );
-      }
+  const [schema, token] = authorization.split(" ");
 
-      req.user = user;
-      next();
-    })
-    .catch(next);
+  if (schema !== "Bearer") {
+    return next(
+      createError(
+        StatusCodes.UNAUTHORIZED,
+        "Authorization schema is not supported"
+      )
+    );
+  }
+
+  if (!token) {
+    return next(
+      createError(StatusCodes.UNAUTHORIZED, "A token must be provided")
+    );
+  }
 };

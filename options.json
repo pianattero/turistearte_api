@@ -1,0 +1,17 @@
+{
+    "data":  {
+        "localsInfo":
+            {
+                "title": "LOCALES",
+                "logo": "/images/logos/logo-locals.png",
+                "slogan": "/images/slogan-locals.png"
+            },
+            "agencyInfo":
+            {
+                "title": "AGENCIAS",
+                "logo": "/images/logos/logo-agency.png",
+                "slogan": "/images/slogan-agency.png"
+            }
+       }
+    
+}
