@@ -7,8 +7,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 
 /* Auth */
 router.post("/login", authController.login);
-// router.post("/signup", authController.signup, authMiddleware.isAuthenticated);
-router.post("/signup", authController.signup);
+router.post("/signup", authController.signup, authMiddleware.isAuthenticated);
 
 /* Content */
 router.get("/options", contentController.getOptions);
